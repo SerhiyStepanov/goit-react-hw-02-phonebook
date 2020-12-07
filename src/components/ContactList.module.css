@@ -1,0 +1,19 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 320px;
+  padding: 4px;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.button {
+  padding: 4px 6px;
+  border: none;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
