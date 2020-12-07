@@ -1,0 +1,20 @@
+.container {
+  display: flexbox;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-bottom: 16px;
+}
+
+.label {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.button {
+  margin-left: 10px;
+  padding: 4px 6px;
+  border: none;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
