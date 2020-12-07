@@ -3,7 +3,7 @@ import shortid from "shortid";
 import PropTypes from "prop-types";
 import s from "./Form.module.css";
 
-export default class Form extends Component {
+export default class ContactForm extends Component {
   state = {
     name: "",
     number: "",
@@ -18,7 +18,7 @@ export default class Form extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     this.props.onSubmit(this.state);
     this.reset();
   };
@@ -72,6 +72,6 @@ export default class Form extends Component {
   }
 }
 
-Form.propTypes = {
+ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };

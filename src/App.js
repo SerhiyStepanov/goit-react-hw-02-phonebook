@@ -1,35 +1,25 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
 import shortid from "shortid";
-import Form from "./components/Form";
+import ContactForm from "./components/Form";
+import Filter from "./components/Filter";
 import ContactList from "./components/ContactList";
 
 export default class App extends Component {
   state = {
     contacts: [],
+    filter: "",
   };
 
-  // onInputChange = (e) => {
-  //   const { name, value } = e.currentTarget;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
-
-  // onFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state);
-  // };
-
-  submitFormHandler = (data) => {
-    console.log(data);
+  addContact = (data) => {
+    // console.log(data);
     const contact = {
       id: shortid.generate(),
       name: data.name,
       number: data.number,
     };
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, contact],
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, contact],
     }));
   };
 
@@ -41,18 +31,35 @@ export default class App extends Component {
     }));
   };
 
+  filterContact = (e) => {
+    this.setState({
+      filter: e.currentTarget.value,
+    });
+  };
+
+  visibleContacts = () => {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    return this.state.contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
-    const { contacts } = this.state;
-    // const inputNameId = shortid.generate();
-    // const inputNumberId = shortid.generate();
+    const { filter } = this.state;
+    const visibleContact = this.visibleContacts();
+
     return (
       <Fragment>
         <h1>Phonebook</h1>
 
-        <Form onSubmit={this.submitFormHandler} />
+        <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-        <ContactList items={contacts} onDeleteContact={this.deleteContact} />
+        <Filter value={filter} onChange={this.filterContact} />
+        <ContactList
+          items={visibleContact}
+          onDeleteContact={this.deleteContact}
+        />
       </Fragment>
     );
   }

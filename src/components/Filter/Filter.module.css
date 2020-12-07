@@ -1,0 +1,11 @@
+.container {
+  display: flexbox;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-bottom: 14px;
+}
+
+.label {
+  display: flex;
+  margin-bottom: 4px;
+}
