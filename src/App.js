@@ -18,6 +18,7 @@ export default class App extends Component {
       name: data.name,
       number: data.number,
     };
+
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
@@ -31,7 +32,7 @@ export default class App extends Component {
     }));
   };
 
-  filterContact = (e) => {
+  filterContacts = (e) => {
     this.setState({
       filter: e.currentTarget.value,
     });
@@ -55,7 +56,7 @@ export default class App extends Component {
         <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-        <Filter value={filter} onChange={this.filterContact} />
+        <Filter value={filter} onChange={this.filterContacts} />
         <ContactList
           items={visibleContact}
           onDeleteContact={this.deleteContact}
