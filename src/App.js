@@ -12,36 +12,17 @@ export default class App extends Component {
   };
 
   addContact = (data) => {
-    // console.log(data.name);  приходит дата из сабмита
-    const { contacts } = this.state;
-    contacts.find((el) => {
-      if (el.name === data.name) alert(` ${data.name} is already in contacts`);
-      return { contacts };
-    });
+    // console.log(data.name);
 
     const contact = {
       id: shortid.generate(),
       name: data.name,
       number: data.number,
     };
-
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
   };
-
-  // addContact = (data) => {
-  //   console.log(data.name);
-
-  //   const contact = {
-  //     id: shortid.generate(),
-  //     name: data.name,
-  //     number: data.number,
-  //   };
-  //   this.setState(({ contacts }) => ({
-  //     contacts: [...contacts, contact],
-  //   }));
-  // };
 
   deleteContact = (contactId) => {
     this.setState((prevState) => ({

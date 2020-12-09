@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import shortid from "shortid";
 import PropTypes from "prop-types";
+import { IoIosPhonePortrait } from "react-icons/io";
+
 import s from "./Form.module.css";
 
 export default class ContactForm extends Component {
@@ -39,7 +41,7 @@ export default class ContactForm extends Component {
         <form onSubmit={this.onFormSubmit}>
           <div className={s.container}>
             <label htmlFor={inputNameId} className={s.label}>
-              Name
+              Name <span className={s.spanName}>name</span>
             </label>
             <input
               type="text"
@@ -47,12 +49,16 @@ export default class ContactForm extends Component {
               id={inputNameId}
               value={this.state.name}
               onChange={this.onInputChange}
+              placeholder="Enter name"
             />
           </div>
 
           <div className={s.container}>
             <label htmlFor={inputNumberId} className={s.label}>
               Number
+              <span className={s.ioIosPhonePortrait}>
+                <IoIosPhonePortrait />
+              </span>
             </label>
             <input
               type="tel"
@@ -60,6 +66,7 @@ export default class ContactForm extends Component {
               id={inputNumberId}
               value={this.state.number}
               onChange={this.onInputChange}
+              placeholder="Enter number"
             />
           </div>
 

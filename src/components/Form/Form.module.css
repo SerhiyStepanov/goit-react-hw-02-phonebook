@@ -19,3 +19,17 @@
   cursor: pointer;
   outline: none;
 }
+
+.ioIosPhonePortrait {
+  display: block;
+  margin-left: 6px;
+  width: 16px;
+  height: 16px;
+  color: cornflowerblue;
+}
+
+.spanName {
+  font-size: 12px;
+  margin-left: 6px;
+  color: cornflowerblue;
+}

@@ -5,5 +5,14 @@
 
 .label {
   display: flex;
+  align-items: center;
   margin-bottom: 4px;
+}
+
+.fiSearch {
+  display: inline-block;
+  margin-left: 6px;
+  width: 16px;
+  height: 16px;
+  color: cornflowerblue;
 }
