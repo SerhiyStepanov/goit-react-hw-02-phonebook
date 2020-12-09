@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import s from "./ContactList.module.css";
 
-export default function ContactList({ items, onDeleteContact }) {
+export default function ContactList({ contacts, onDeleteContact }) {
   return (
     <ul>
-      {items.map(({ name, number, id }) => (
+      {contacts.map(({ name, number, id }) => (
         <li key={id} className={s.list}>
           <p className={s.text}>
             {name} : {number}
@@ -23,7 +23,7 @@ export default function ContactList({ items, onDeleteContact }) {
 }
 
 ContactList.propTypes = {
-  items: PropTypes.arrayOf(
+  contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       number: PropTypes.string,

@@ -7,12 +7,18 @@ import ContactList from "./components/ContactList";
 
 export default class App extends Component {
   state = {
-    contacts: [],
+    contacts: [{ name: "qqq" }],
     filter: "",
   };
 
   addContact = (data) => {
-    // console.log(data);
+    // console.log(data.name);  приходит дата из сабмита
+    const { contacts } = this.state;
+    contacts.find((el) => {
+      if (el.name === data.name) alert(` ${data.name} is already in contacts`);
+      return { contacts };
+    });
+
     const contact = {
       id: shortid.generate(),
       name: data.name,
@@ -23,6 +29,19 @@ export default class App extends Component {
       contacts: [...contacts, contact],
     }));
   };
+
+  // addContact = (data) => {
+  //   console.log(data.name);
+
+  //   const contact = {
+  //     id: shortid.generate(),
+  //     name: data.name,
+  //     number: data.number,
+  //   };
+  //   this.setState(({ contacts }) => ({
+  //     contacts: [...contacts, contact],
+  //   }));
+  // };
 
   deleteContact = (contactId) => {
     this.setState((prevState) => ({
@@ -58,7 +77,7 @@ export default class App extends Component {
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.filterContacts} />
         <ContactList
-          items={visibleContact}
+          contacts={visibleContact}
           onDeleteContact={this.deleteContact}
         />
       </Fragment>
