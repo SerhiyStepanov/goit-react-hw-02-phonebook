@@ -7,7 +7,7 @@ import ContactList from "./components/ContactList";
 
 export default class App extends Component {
   state = {
-    contacts: [{ name: "qqq" }],
+    contacts: [],
     filter: "",
   };
 
