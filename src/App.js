@@ -11,18 +11,6 @@ export default class App extends Component {
     filter: "",
   };
 
-  // addContact = (data) => {
-  //   // console.log(data.name);
-
-  //   const contact = {
-  //     id: shortid.generate(),
-  //     name: data.name,
-  //     number: data.number,
-  //   };
-  //   this.setState(({ contacts }) => ({
-  //     contacts: [...contacts, contact],
-  //   }));
-  // };
   addContact = (data) => {
     const repeatName = this.state.contacts.some((el) => el.name === data.name);
     if (repeatName) {
