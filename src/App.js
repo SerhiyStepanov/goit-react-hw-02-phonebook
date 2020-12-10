@@ -11,16 +11,36 @@ export default class App extends Component {
     filter: "",
   };
 
-  addContact = (data) => {
-    // console.log(data.name);
+  // addContact = (data) => {
+  //   // console.log(data.name);
 
+  //   const contact = {
+  //     id: shortid.generate(),
+  //     name: data.name,
+  //     number: data.number,
+  //   };
+  //   this.setState(({ contacts }) => ({
+  //     contacts: [...contacts, contact],
+  //   }));
+  // };
+  addContact = (data) => {
+    const repeatName = this.state.contacts.some((el) => el.name === data.name);
+    if (repeatName) {
+      alert(`${data.name} is alreadi in contacts.`);
+      return;
+    }
+    if (data.name === "") {
+      alert("Enter  name please");
+      return;
+    }
     const contact = {
       id: shortid.generate(),
       name: data.name,
       number: data.number,
     };
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
+
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts, contact],
     }));
   };
 
