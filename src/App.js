@@ -11,6 +11,20 @@ export default class App extends Component {
     filter: "",
   };
 
+  componentDidMount() {
+    const saveStorageContacts = localStorage.getItem("contacts");
+    const parseStorageContacts = JSON.parse(saveStorageContacts);
+    if (parseStorageContacts) {
+      this.setState({ contacts: parseStorageContacts });
+    }
+  }
+
+  componentDidUpdate(prevState, prevProps) {
+    if (this.state.contacts !== prevState) {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+    }
+  }
+
   addContact = (data) => {
     const repeatName = this.state.contacts.some((el) => el.name === data.name);
     if (repeatName) {
